@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeviceDomain xmlns="http://example.com/device-domain"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://example.com/device-domain device-domain.xsd">
+
+    <Device>
+        <DeviceId>DEV-001</DeviceId>
+        <DeviceType>HeartRateMonitor</DeviceType>
+
+        <Thresholds>
+            <MinValue>40</MinValue>
+            <MaxValue>180</MaxValue>
+        </Thresholds>
+
+        <Metadata>
+            <Manufacturer>Acme Medical</Manufacturer>
+            <Version>1.0</Version>
+        </Metadata>
+    </Device>
+
+</DeviceDomain>

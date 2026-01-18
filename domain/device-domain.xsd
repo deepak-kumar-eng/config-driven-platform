@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://example.com/device-domain"
+            xmlns="http://example.com/device-domain"
+            elementFormDefault="qualified">
+
+    <!-- Root Element -->
+    <xsd:element name="DeviceDomain">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Device" type="DeviceType"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- Device -->
+    <xsd:complexType name="DeviceType">
+        <xsd:sequence>
+            <xsd:element name="DeviceId" type="xsd:string"/>
+            <xsd:element name="DeviceType" type="xsd:string"/>
+            <xsd:element name="Thresholds" type="ThresholdType"/>
+            <xsd:element name="Metadata" type="MetadataType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Thresholds -->
+    <xsd:complexType name="ThresholdType">
+        <xsd:sequence>
+            <xsd:element name="MinValue" type="xsd:int"/>
+            <xsd:element name="MaxValue" type="xsd:int"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Metadata -->
+    <xsd:complexType name="MetadataType">
+        <xsd:sequence>
+            <xsd:element name="Manufacturer" type="xsd:string"/>
+            <xsd:element name="Version" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
