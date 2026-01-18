@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import com.platform.domain.model.Device;
+import com.platform.domain.model.Metadata;
 import com.platform.domain.model.Threshold;
 import com.platform.domain.validation.ValidationResult;
 
@@ -13,7 +14,11 @@ public class ThresholdOrderRuleTest {
 
     @Test
     void shouldPassWhenMinIsLessThanMax() {
-        Device device = new Device(new Threshold(40, 180));
+        Device device = new Device(
+        new Threshold(40, 180),
+        new Metadata("TestManufacturer", "1.0")
+);
+
         ThresholdOrderRule rule = new ThresholdOrderRule();
 
         ValidationResult result = rule.validate(device);
@@ -23,7 +28,11 @@ public class ThresholdOrderRuleTest {
 
     @Test
     void shouldFailWhenMinIsGreaterThanOrEqualToMax() {
-        Device device = new Device(new Threshold(200, 100));
+        Device device = new Device(
+        new Threshold(200, 100),
+        new Metadata("TestManufacturer", "1.0")
+);
+
         ThresholdOrderRule rule = new ThresholdOrderRule();
 
         ValidationResult result = rule.validate(device);

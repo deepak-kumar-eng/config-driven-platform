@@ -1,4 +1,4 @@
-package com.platform.domain.validation.rules;
+package com.platform.domain.validation;
 
 import java.util.List;
 
@@ -8,19 +8,22 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import com.platform.domain.model.Device;
+import com.platform.domain.model.Metadata;
 import com.platform.domain.model.Threshold;
-import com.platform.domain.validation.DomainValidator;
-import com.platform.domain.validation.ValidationResult;
+import com.platform.domain.validation.rules.ThresholdOrderRule;
 
 public class DomainValidatorTest {
 
     @Test
-    void shouldFailFastWhenFirstRuleFails() {
+    void shouldFailFastWhenRuleFails() {
         DomainValidator validator = new DomainValidator(
                 List.of(new ThresholdOrderRule())
         );
 
-        Device device = new Device(new Threshold(200, 100));
+        Device device = new Device(
+                new Threshold(200, 100),
+                new Metadata("TestManufacturer", "1.0")
+        );
 
         ValidationResult result = validator.validate(device);
 
@@ -34,7 +37,10 @@ public class DomainValidatorTest {
                 List.of(new ThresholdOrderRule())
         );
 
-        Device device = new Device(new Threshold(40, 180));
+        Device device = new Device(
+                new Threshold(40, 180),
+                new Metadata("TestManufacturer", "1.0")
+        );
 
         ValidationResult result = validator.validate(device);
 
